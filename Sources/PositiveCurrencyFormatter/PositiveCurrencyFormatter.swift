@@ -8,11 +8,11 @@ public final class PositiveCurrencyFormatter {
 
   // MARK: - Private -
 
-  /// A dash sign (U+002D) to be replace with a minus sign (U+2212).
-  private let dashSign = "-"
-
   /// Internal instance of CurrencyNumberFormatter.
   private let currencyFormatter: CurrencyNumberFormatter
+
+  /// A dash sign (U+002D) to be replace with a minus sign (U+2212).
+  private let dashSign = "-"
 
   // MARK: - Public -
 
