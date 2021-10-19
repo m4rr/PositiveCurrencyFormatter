@@ -22,6 +22,8 @@ final class PositiveCurrencyFormatterTests: XCTestCase {
     let nf1 = PositiveCurrencyFormatter(locale: Locale(identifier: "nl_NL"), currencyCode: "EUR", currencySymbol: "€")
     let nf2 = PositiveCurrencyFormatter(locale: Locale(identifier: "nl_NL"), currencyCode: nil, currencySymbol: nil)
     let nf3 = PositiveCurrencyFormatter(locale: Locale(identifier: "nl_NL"))
+    let nf4 = PositiveCurrencyFormatter(locale: Locale(identifier: "nl_NL"), currencyCode: "RUB", currencySymbol: "₽")
+    let nf5 = PositiveCurrencyFormatter(locale: Locale(identifier: "nl_NL"), currencyCode: "USD", currencySymbol: "$")
 
     XCTAssertEqual(nf1.string(from: -123.65)!, "€\(nbsp)−123,65")
     XCTAssertEqual(nf1.string(from:  123.65)!, "€\(nbsp)+123,65")
@@ -31,6 +33,12 @@ final class PositiveCurrencyFormatterTests: XCTestCase {
 
     XCTAssertEqual(nf3.string(from: -123.65)!, "€\(nbsp)−123,65")
     XCTAssertEqual(nf3.string(from:  123.65)!, "€\(nbsp)+123,65")
+
+    XCTAssertEqual(nf4.string(from: -123.65)!, "₽\(nbsp)−123,65")
+    XCTAssertEqual(nf4.string(from:  123.65)!, "₽\(nbsp)+123,65")
+
+    XCTAssertEqual(nf5.string(from: -123.65)!, "$\(nbsp)−123,65")
+    XCTAssertEqual(nf5.string(from:  123.65)!, "$\(nbsp)+123,65")
 
     XCTAssertEqual(nf1.string(from: -123.65)!, nf2.string(from: -123.65)!, nf3.string(from: -123.65)!)
     XCTAssertEqual(nf1.string(from:  123.65)!, nf2.string(from:  123.65)!, nf3.string(from:  123.65)!)
